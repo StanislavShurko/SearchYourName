@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  align-items: center;
 }
 
 .App-logo {
@@ -35,4 +36,49 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.find_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+input {
+  font-size: 16px;
+  padding: 10px;
+  display: block;
+  width: 300px;
+  border: none;
+  border: 1px solid #ccc;
+}
+input:focus {
+  outline: none;
+}
+
+.column {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 10px;
+  flex-direction: column;
+}
+
+.second {
+  font-size: 164px;
+  text-align: bottom;
+}
+
+.first {
+  font-size: 122px;
+}
+
+.third {
+  font-size: 90px;
+  text-align: bottom;
 }
