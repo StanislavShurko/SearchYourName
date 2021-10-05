@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { NameInput } from "./NameInput";
+import React, {useEffect, useState} from "react";
+import {NameInput} from "./NameInput";
 
 export function FindName() {
 
@@ -14,13 +14,13 @@ export function FindName() {
     }
 
     async function getLatest() {
-        try{
-            const res = await axios.get(`https://api.nationalize.io?name=${person}`);
-            setFirstCountry("1." + res.data.country[0].country_id)
-            setSecondCountry("2." + res.data.country[1].country_id)
-            setThirdCountry("3." + res.data.country[2].country_id)
-        }catch{
-            console.log(Error)
+        try {
+            const res = await axios.get<any>(`https://api.nationalize.io?name=${person}`);
+            setFirstCountry("1." + res.data?.country[0].country_id)
+            setSecondCountry("2." + res.data?.country[1].country_id)
+            setThirdCountry("3." + res.data?.country[2].country_id)
+        } catch (e) {
+            console.log(e)
         }
     }
 
