@@ -7,7 +7,7 @@ interface NameInputProps {
 export function NameInput({inputValue}: NameInputProps) {
     return (
         <div>
-            <input type="text" onChange={ e => inputValue(e.target.value)} />
+            <input type="text" onChange={ e => inputValue(e.target.value) } />
         </div>
     )
 }
