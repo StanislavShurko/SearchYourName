@@ -5,9 +5,7 @@ import {NameInput} from "./NameInput";
 export function FindName() {
 
     const [person, setPerson] = useState("")
-    const [firstCountry, setFirstCountry] = useState("")
-    const [secondCountry, setSecondCountry] = useState("")
-    const [thirdCountry, setThirdCountry] = useState("")
+    const [country, setCountry] = useState("")
 
     function handlePerson(e: string) {
         setPerson(e)
@@ -16,9 +14,7 @@ export function FindName() {
     async function getLatest() {
         try {
             const res = await axios.get<any>(`https://api.nationalize.io?name=${person}`);
-            setFirstCountry("1." + res.data?.country[0].country_id)
-            setSecondCountry("2." + res.data?.country[1].country_id)
-            setThirdCountry("3." + res.data?.country[2].country_id)
+            setCountry(res.data?.country)
         } catch (e) {
             console.log(e)
         }
@@ -26,6 +22,7 @@ export function FindName() {
 
     useEffect(() => {
             void getLatest();
+            console.log(country[0]["country_id"])
         }
         , [person]
     )
@@ -38,9 +35,9 @@ export function FindName() {
                 />
             </div>
             <div className="column">
-                <div className="first">{secondCountry}</div>
-                <div className="second">{firstCountry}</div>
-                <div className="third">{thirdCountry}</div>
+               <div className="first"></div>
+               <div className="second"></div>
+               <div className="third"></div>
             </div>
         </div>
     )
