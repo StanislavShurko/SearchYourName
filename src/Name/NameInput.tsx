@@ -1,7 +1,7 @@
 import React from "react";
 
 interface NameInputProps {
-    inputValue: (e: any) => void
+    inputValue: (e: string) => void
 }
 
 export function NameInput({inputValue}: NameInputProps) {

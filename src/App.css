@@ -1,6 +1,11 @@
 .App {
   text-align: center;
   align-items: center;
+  background-color: rgb(29, 29, 29);
+}
+
+html {
+  background-color: rgb(29, 29, 29);
 }
 
 .App-logo {
@@ -42,18 +47,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   padding: 20px;
+  background-color: grey;
+  margin-top: 40px;
+  border-radius: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 input {
-  font-size: 16px;
+  font-size: 24px;
   padding: 10px;
   display: block;
   width: 300px;
   border: none;
   border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
 }
 input:focus {
   outline: none;
@@ -81,4 +91,22 @@ input:focus {
 .third {
   font-size: 90px;
   text-align: bottom;
+}
+
+.li-elem {
+  display: inline; 
+  margin-right: 5px; 
+  color: white;
+  font-size: 200px;
+  padding: 3px; 
+}
+
+.ul-elem { 
+  margin: 0; 
+  padding: 4px; 
+}
+
+.loading-elem {
+  color: white;
+  font-size: 60px;
 }

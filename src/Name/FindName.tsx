@@ -6,8 +6,9 @@ import { RequestState } from "./RequestState";
 export function FindName() {
 
     const [person, setPerson] = useState("")
-    const [country, setCountry] = useState("")
+    const [country, setCountry] = useState([{country_id: "", probability: 0}])
     const [rs, setRs] = useState<RequestState>(RequestState.none);
+    const [countryCount, setCountryCount] = useState(0)
 
     function handlePerson(e: string) {
         setPerson(e)
@@ -16,8 +17,8 @@ export function FindName() {
     async function getLatest() {
         try {
             setRs(RequestState.request)
-            const res = await axios.get<any>(`https://api.nationalize.io?name=${person}`);
-            setCountry(res.data?.country)
+            const res = await axios.get(`https://api.nationalize.io?name=${person}`);
+            setCountry(res?.data.country)
             setRs(RequestState.success)
         } catch (e) {
             setRs(RequestState.failure)
@@ -26,11 +27,28 @@ export function FindName() {
     }
 
     useEffect(() => {
-            void getLatest();
-            console.log(country[0])
+            if (person.length > 2) {
+                void getLatest();
+            }else{
+                setCountry([{country_id: "", probability: 0}])
+            }
         }
         , [person]
     )
+
+    const renderCountries = () => {
+        if (rs === RequestState.request) {
+            return <div className="loading-elem">Loading...</div>
+        }else if (person.length <= 2) {
+            return <div className="li-elem">Countries will be here...</div>
+        }
+
+        const list = country.map(c =>
+            <li className="li-elem" key={c.country_id}>{c.country_id}   </li>    
+        );
+        return <ul className="ul-elem">{list}</ul>
+    }
+
 
     return (
         <div className="find_name">
@@ -39,9 +57,7 @@ export function FindName() {
                     inputValue={handlePerson}
                 />
             </div>
-            <div className="column">
-               <div className="first">{}</div>
-            </div>
+            {renderCountries()}
         </div>
     )
 }
