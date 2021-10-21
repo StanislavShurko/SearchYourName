@@ -8,7 +8,6 @@ export function FindName() {
     const [person, setPerson] = useState("")
     const [country, setCountry] = useState([{country_id: "", probability: 0}])
     const [rs, setRs] = useState<RequestState>(RequestState.none);
-    const [countryCount, setCountryCount] = useState(0)
 
     function handlePerson(e: string) {
         setPerson(e)
