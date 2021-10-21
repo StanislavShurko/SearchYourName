@@ -8,6 +8,7 @@ export function FindName() {
     const [person, setPerson] = useState("")
     const [country, setCountry] = useState([{country_id: "", probability: 0}])
     const [rs, setRs] = useState<RequestState>(RequestState.none);
+    const [timeHandler, setTimeHandler] = useState<any>();
 
     function handlePerson(e: string) {
         setPerson(e)
@@ -26,9 +27,10 @@ export function FindName() {
     }
 
     useEffect(() => {
+        clearTimeout(timeHandler)
             if (person.length > 2) {
-                void getLatest();
-            }else{
+                setTimeHandler(setTimeout(getLatest, 400));  
+            } else {
                 setCountry([{country_id: "", probability: 0}])
             }
         }
