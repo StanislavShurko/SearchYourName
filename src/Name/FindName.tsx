@@ -53,7 +53,7 @@ export function FindName() {
 
     return (
         <div className="find_name">
-            <div className="name_input">
+            <div className="name-input">
                 <NameInput
                     inputValue={handlePerson}
                 />
